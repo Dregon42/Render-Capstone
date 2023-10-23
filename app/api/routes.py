@@ -29,7 +29,7 @@ def get_rsvps(current_user_token):
     response = rsvps_schema.dump(rsvps)
     return jsonify(response)
 
-@api.route('/rsvps/<string:id>', methods=['GET'])
+@api.route('/rsvps/<id>', methods=['GET'])
 @token_required
 def get_single_rsvp(current_user_token,id):
     rsvp = Rsvp.query.get(id)

@@ -21,3 +21,4 @@ psycopg2-binary
 python-dateutil
 python-dotenv
 six
+marshmallow-sqlalchemy
