@@ -48,7 +48,7 @@ class Rsvp (db.Model):
     id = db.Column(db.String, primary_key = True)
     guest_1 = db.Column(db.String(100), nullable = False)
     guest_2 = db.Column(db.String(100), nullable = True)
-    message = db.Column(db.String(500), nullable = True)
+    message = db.Column(db.String(500), nullable = True, primary_key = True)
     rvsp_date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
 
     def __init__(self, message, guest_1, guest_2, id='' ):
@@ -69,3 +69,25 @@ class RsvpSchema(ma.Schema):
 
 rsvp_schema = RsvpSchema()
 rsvps_schema = RsvpSchema(many=True)
+
+class Messages (db.Model):
+    id = db.Column(db.String, primary_key = True)
+    message = db.Column(db.String(500), db.ForeignKey('rsvp.message'), nullable = True)
+    
+
+    def __init__(self, message, id='' ):
+        self.id = self.set_id()
+        self.message = message
+
+    def __repr__(self):
+        return print(f'The following message has been added to the Messages Table: {self.id}')
+
+    def set_id(self):
+        return (secrets.token_urlsafe())
+    
+class MessageSchema(ma.Schema):
+    class Meta:
+        fields = ['id', 'message']
+
+message_schema = MessageSchema()
+messages_schema = MessageSchema(many=True)

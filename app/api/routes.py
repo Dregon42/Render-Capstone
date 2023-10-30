@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from helpers import token_required
-from models import db, Rsvp, rsvp_schema, rsvps_schema
+from models import db, Rsvp, rsvp_schema, rsvps_schema, Messages, message_schema, messages_schema
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
