@@ -48,7 +48,7 @@ class Rsvp (db.Model):
     id = db.Column(db.String, primary_key = True)
     guest_1 = db.Column(db.String(100), nullable = False)
     guest_2 = db.Column(db.String(100), nullable = True)
-    message = db.Column(db.String(500), nullable = True, primary_key = True)
+    message = db.Column(db.String(500), nullable = True)
     rvsp_date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
 
     def __init__(self, message, guest_1, guest_2, id='' ):
