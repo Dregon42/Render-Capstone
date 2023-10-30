@@ -47,8 +47,6 @@ def update_rsvp(current_user_token, id):
 
 
     if rsvp:
-        rsvp.guest_1 = request.json['guest_1']
-        rsvp.guest_2 = request.json['guest_2']
         rsvp.message = request.json['message']
         
         db.session.commit()
